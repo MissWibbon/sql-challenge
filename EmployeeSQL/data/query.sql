@@ -27,3 +27,39 @@ INNER JOIN department
 ON department.dept_no = dept_manager.dept_no
 
 -- List the department of each employee with the following information: employee number, last name, first name, and department name.
+SELECT * FROM employees;
+SELECT * FROM department;
+SELECT * FROM dept_emp;
+
+SELECT employees.emp_no, employees.first_name, employees.last_name,
+department.dept_name
+FROM employees
+INNER JOIN dept_emp
+ON employees.emp_no = dept_emp.emp_no
+INNER JOIN department
+ON department.dept_name = dept_emp.dept_name
+
+
+-- List all employees whose first name is "Hercules" and last names begin with "B."
+SELECT * FROM employees WHERE first_name = 'Hercules' AND LEFT(last_name, 1) = 'B';
+
+
+-- List all employees in the Sales department, including their employee number, last name, first name, and department name.
+SELECT * FROM employees;
+SELECT * FROM department WHERE dept_name = 'Sales';
+SELECT * FROM dept_emp;
+
+SELECT employees.emp_no, employees.last_name, employees.first_name, 
+department.dept_name
+
+FROM employees
+LEFT JOIN dept_emp
+ON employees.emp_no = dept_emp.emp_no
+LEFT JOIN department
+ON dept_emp.dept_name = department.dept_name;
+
+
+-- List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+
+
+-- In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
